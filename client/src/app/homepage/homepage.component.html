@@ -1,0 +1,173 @@
+<div>
+  <web-header></web-header>
+  <app-jobsearchbar></app-jobsearchbar>
+
+  <!-- main container starts -->
+  <div class="container">
+
+    <!-- body heading -->
+    <div class="row" style="text-align:center; margin-top:40px;">
+        <p style="font-family:'roboto-light'; font-size:20px">OUR PROCESS</p>
+        <h2 style="font-family:'roboto-black'; margin:0px;">WE WORK FOR YOU</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor<br>incididunt ut labore et dolore magna aliqua</p>
+    </div>
+
+    <!-- body 3 options -->
+    <div class="row bodyoptions">
+      <div class="col-sm-4">
+        <div class="option">
+
+          <div class="iconparent">
+            <div class="icon">
+              <img src="assets/images/header-option-callout.png" >
+            </div>
+          </div>
+
+          <div class="option-text-parent">
+              <h4>Searching for the best job</h4>
+              <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
+          </div>  
+
+        </div>  
+      </div>
+      <div class="col-sm-4">
+        <div class="option">
+          
+          <div class="iconparent">
+            <div class="icon">
+              <img src="assets/images/header-option-resume.png" >
+            </div> 
+          </div>
+
+          <div class="option-text-parent">
+              <h4>Create your resume</h4>
+              <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
+          </div> 
+
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="option">
+
+          <div class="iconparent">
+            <div class="icon">
+                <img src="assets/images/header-option-candidate.png" >
+            </div> 
+          </div>
+
+          <div class="option-text-parent">
+              <h4>Face interview online</h4>
+              <p>Using the outcomes from the job, we will put together a plan for the most effective marketing strategy to get the best results.</p>
+          </div> 
+
+        </div>
+      </div>
+    </div>
+    <!-- body 3 options close -->
+
+    <div class="row home-employeerslist" >
+        <p> <strong>Top Employeers</strong></p>
+
+        <!-- Employeers List -->
+        <div class="home-employeers">
+            <ul>
+              <li *ngFor="let employee of employeeslist; let i=index">
+                    <img src="../../assets/images/dummy/{{employee.image}}" width="90" height="100"> 
+              </li>
+            </ul>
+        </div>
+        <!-- Employeers List End-->
+    </div>
+
+  </div>
+  <!-- main container Ends -->
+
+  <div class="home-jobsection">
+          
+          <div class=" row home-jobsection-heading">
+                <h4 style="margin:0px">RECENT JOBS</h4>
+                <h2 style="margin:0px"><span>9999</span> AVAILABLE JOBS FOR YOU</h2>
+          </div>
+
+          <div class="container home-jobcontainer" >
+
+            <!-- Job Listing Start -->
+                <div class="col-sm-9 home-joblist">
+                    <ul>                   
+                        <li *ngFor="let job of jobslist; let i=index">
+                            <div class="col-sm-2">
+                              <!-- company logo -->
+                              <div class="home-jobimgContainer">
+                                  <img src="../../assets/images/dummy/{{job.image}}" width="70" height="70">
+                              </div>
+                            </div>
+                            <div class="col-sm-10" style="height:70px; margin:0px; padding:30px 0px 0px 0px;">
+
+                                <!-- Job Discription-->
+                                <div class="home-jobdisc col-sm-3">
+                                    <h4>{{job.jobtitle}}</h4>
+                                    <p>{{job.experience}}</p>
+                                </div>
+
+                                <!-- Company Name -->
+                                <div class="home-companyname col-sm-3">{{job.name}}</div>
+
+                                <!-- Company Location -->
+                                <div class="home-companylocation col-sm-3">
+                                  <i class="fa fa-map-marker" aria-hidden="true"></i> {{job.location}}
+                                </div>
+
+                                <div class="col-sm-3 home-jobapplybtn">
+                                    <button type="button" class="btn btn-info">Apply Now</button>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Job Listing Ends -->
+
+                <!-- Advertisement -->
+                <div class="col-sm-3" style="background-color:blue; height:600px;">
+
+                    Advertisement Area
+                </div>
+                <!-- Advertisement Area End-->
+
+                <div class="container home-morejobs">
+                  
+                  <button type="button" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Browse more jobs</button>
+
+                </div>
+          </div>
+          <!-- Job Container Ends -->
+
+          
+          <div class="home-testimonial">
+
+              <div class="home-testimonialtext">
+                      <p>TESTIMONIALS</p>
+                    <h3>WHAT PEOPLE ARE SAYING</h3>
+              </div>
+
+              <ul>
+                <li>
+                    <div class="home-clientfeedback">
+                        <p>JobOculur offer me an amazing service and I couldn't be happier! They are dedicated
+                           to helpinng recruiter fing great candidates, wonderful service! 
+                           <br><strong>Piyush Gupta, </strong>Project Manager</p>
+                    </div>
+
+                    <div class="home-clientimg">
+                      <img src="../../assets/images/dummy/ankush.jpg" width="100" height="100">
+                    </div>
+                </li>
+              </ul>
+          </div>
+            
+  </div>
+
+  <web-footer></web-footer>
+</div>

@@ -1,0 +1,19 @@
+.candidate-register-options{margin-top:30px;}
+
+.candidate-fresher, .candidate-professional{height: 250px; font-style:'roboto-light'; color:#000; cursor: pointer;}
+
+.candidate-fresher:hover, .candidate-professional:hover{height: 250px; 
+font-style:'roboto-light'; background-color:#00aeef; cursor: pointer;}
+
+.candidate-fresher p, .candidate-professional p{ width: 100%; margin-top:20px; text-align: center; color:#000;}
+
+.candidate-fresher:hover p, .candidate-professional:hover p{ width: 100%; margin-top:20px; text-align: center; color:#fff;}
+
+.candidate-fresher p span, .candidate-professional p span{ width: 100%; margin-top:20px; text-align: center; 
+font-style: 'roboto-bold'; color:#00aeef;}
+
+.candidate-fresher:hover p span, .candidate-professional:hover p span{ width: 100%; margin-top:20px; text-align: center; 
+font-style: 'roboto-bold'; color:#fff;}
+
+.register-fresher{width: 152px; height:160px; margin: 0 auto;}
+

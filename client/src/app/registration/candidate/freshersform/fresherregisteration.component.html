@@ -1,0 +1,134 @@
+<div style="float:left; overflow:hidden; ">
+    <form #fresherregister="ngForm" (ngSubmit)="submitform()" >
+      <div class="col-sm-12">
+        
+        <!-- fresher form step1 starts -->
+
+        <!-- name:string; pass:string; phone:string;email:string; -->
+        <div>
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Name </div>
+            <div class="col-sm-9">
+              <input type="text" name="name" [(ngModel)]="userData.name" placeholder="Name" required>
+            </div>
+          </div>
+
+          <div class="fresher-email" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Email ID </div>
+            <div class="col-sm-9">
+              <input type="email" name="email" placeholder="Enter your active email id" required [(ngModel)]="userData.email" >
+            </div>
+          </div>
+
+          <div class="fresher-password" class="col-sm-12 formfield">
+            <div class="col-sm-3">Enter Password </div>
+            <div class="col-sm-9">
+              <input type="password" placeholder="Min 6 characters" required name="pass" [(ngModel)]="userData.pass">
+            </div>
+          </div>
+
+          <div class="fresher-mobile" class="col-sm-12 formfield">
+            <div class="col-sm-3">Enter Mobile</div>
+            <div class="col-sm-9">
+              <div class="form-tel-label">+91</div>
+              <input type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Where recruiters call you" required name="phone" [(ngModel)]="userData.phone" >
+            </div>
+          </div>
+
+          <div class="fresher-location" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Current Location </div>
+            <div class="col-sm-9">
+              <select name="location" [(ngModel)]="userData.location">
+                <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fresher-resume" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Upload Resume </div>
+            <div class="col-sm-9">
+              <input type="file" style="display:none;" (change)="getfile($event)" id="resuleuploader" name="resuleuploader" 
+              value="Upload Latest Resume" accept=".doc,.docx,.rtf,.pdf">
+              <label class="resuleuploader" for="resuleuploader" >{{browsedfilename}}</label>
+            </div>
+          </div>
+          
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Highest Qualification </div>
+            <div class="col-sm-9">
+              Select your highest Qualification
+            </div>
+          </div>
+
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> course </div>
+            <div class="col-sm-9">
+              <div (click)="tab1=!tab1; tab2=false; tab3=false; val='fulltime'" class="col-sm-4 fresher-formfieldradio"  [ngClass]="{'selectedtab':tab1}">Full Time</div>
+              <div (click)="tab2=!tab2; tab1=false; tab3=false; val='parttime'" class="col-sm-4 fresher-formfieldradio" [ngClass]="{'selectedtab':tab2}">Part Time</div>
+              <div (click)="tab3=!tab3; tab1=false; tab2=false; val='correspondence'" class="col-sm-4 fresher-formfieldradio" [ngClass]="{'selectedtab':tab3}">Correspondence</div>
+            </div>
+          </div>
+
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Specialization </div>
+            <div class="col-sm-9">
+              <input type="text"  placeholder="Your technical specialization" required name="specilization" [(ngModel)]="userData.specilization">
+            </div>
+          </div>
+
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> University/College </div>
+            <div class="col-sm-9">
+              <input type="text"  placeholder="Institute Name" required name="institute" [(ngModel)]="userData.institute">
+            </div>
+          </div>
+
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Course </div>
+            <div class="col-sm-9">
+              <input type="text" placeholder="Enter your full name" required >
+            </div>
+          </div>
+
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Passing year </div>
+            <div class="col-sm-9">
+              <input type="text"  placeholder="select year of passing" required >
+            </div>
+          </div>
+
+          <div class="fresher-formfields" class="col-sm-12 formfield">
+            <div class="col-sm-3"> Skills </div>
+            <div class="col-sm-9">
+              <input minlength="" type="text" placeholder="Enter your areas of expertise/specilization" required >
+            </div>
+          </div>
+        <!-- End of step 1 ends-->
+
+        <div class="fresher-formfields" class="col-sm-12 formfield">
+           <div class="captchabox" id="captcha">
+
+             <div class="captchatitle"> Solve this</div>
+
+             <div class="captchatext"> {{captchadata.val1}} </div>
+
+             <div class="captchatext"> {{captchadata.method}} </div>
+
+             <div class="captchatext"> {{captchadata.val2}} </div>
+
+             <div class="captchatext"> = </div>
+
+             <input type="text" class="captchaanswerbox" [(ngModel)]="captchadataanswer" name="captchadataanswer" >
+             
+           </div>
+        </div>
+
+          <div class="col-sm-12" style="height:160px; padding-top:40px;">
+           
+              <input type="submit" class="btn btn-primary custombtn" value="Register" >
+          </div>
+        </div>
+      </div>
+      <!-- End of form -->
+    </form>
+</div>

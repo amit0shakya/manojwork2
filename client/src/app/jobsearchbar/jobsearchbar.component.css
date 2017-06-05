@@ -1,0 +1,52 @@
+.jobsearch-bar{width:100%; height:300px; float:left; background-color: red;}
+
+.jobsearch-barbgimg{}
+
+.jobsearch-container{margin-top:35px;}
+
+.jobsearch-body{height:100px;float:left; background-color: rgba(255,255,255,.5); padding:20px 30px; width:100%; 
+position: relative;}
+
+#jobsearchbtn{border-radius: 0px; background-color: #0486b7; border:none; padding: 15px; position: absolute;
+top:20px; right:30px; text-decoration: none; font-family: 'roboto-light'}
+
+#jobsearchbtn:hover{border-radius: 0px; background-color:#047aa7; border:none; padding: 15px; position: absolute;
+top:20px; right:30px; text-decoration: none; font-family: 'roboto-light'}
+
+.jobsearch-body input[type="text"]{width:100%; height:50px; padding:15px;}
+
+.jobsearch-body input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+font-family: 'roboto'; font-size:'20px';}
+
+.jobsearch-registerbox{background-color: rgba(255,255,255,.5);}
+
+.jobsearch-candidate{width:45%; height:180px; margin:25px 12px; background-color:#fff; position: relative; cursor: pointer;}
+
+.jobsearch-candidate:hover{width:45%; height:180px; margin:25px 12px; background-color:#047aa7; position: relative; 
+cursor: pointer;}
+
+.jobsearch-candidate .icon {position: absolute; bottom: 10px; right: 10px;}
+
+.jobsearch-candidate p {font-size: 18px; text-align: center; width:100%; margin-top:30px; color:#000;}
+
+.jobsearch-candidate:hover p {font-size: 18px; text-align: center; width:100%; margin-top:30px; color:#fff;}
+
+.jobsearch-candidate h4{position: absolute; left:10px; bottom:0px; font-weight: 300; color:#047aa7}
+
+.jobsearch-candidate:hover h4{position: absolute; left:10px; bottom:0px; font-weight: 300; color:#fff}
+
+.jobsearch-employee{ width:45%; height:180px;  margin:25px 12px; background-color:#fff;
+ position: relative; cursor: pointer;}
+
+.jobsearch-employee:hover{ width:45%; height:180px;  margin:25px 12px; background-color:#047aa7; 
+position: relative; cursor: pointer;}
+
+.jobsearch-employee p{font-size: 18px; text-align: center; width:100%; margin-top:30px; color:#000}
+
+.jobsearch-employee:hover p{font-size: 18px; text-align: center; width:100%; margin-top:30px; color:#fff;}
+
+.jobsearch-employee .icon {position: absolute; bottom: 1px; right: 1px;}
+
+.jobsearch-employee h4{position: absolute; left:10px; bottom:0px; font-weight: 300; color:#047aa7}
+
+.jobsearch-employee:hover h4{position: absolute; left:10px; bottom:0px; font-weight: 300; color:#fff}

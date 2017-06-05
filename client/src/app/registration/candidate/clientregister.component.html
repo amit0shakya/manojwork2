@@ -1,0 +1,38 @@
+<web-header></web-header>
+<div class="container">
+  register banner
+  </div>
+<!-- form body -->
+<div class="container">
+    <div class="candidate-register-options" *ngIf="formoptions"> 
+        <div class="col-sm-3"></div>
+        
+        <div class="col-sm-3 candidate-fresher" (click)="formoptions=false; fresherform=true">
+            <p>Register as <br><span> FRESHER EMPLOYEE </span> </p>
+            <div class="register-fresher">
+                <img src="assets/images/fresher.png">
+            </div>
+        </div>
+
+        <div class="col-sm-3 candidate-professional" (click)="formoptions=false; experienceform=true">
+          <p>Register as <br><span>EXPERIENCE EMPLOYEE </span> </p>
+            <div class="register-fresher">
+                <img src="assets/images/employee.png">
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <!-- Fresher Employee Form starts-->
+    <div *ngIf="fresherform" class="row">
+        
+        <fresherregisteration></fresherregisteration>
+    </div>
+    <!-- Fresher Employee Form ends-->
+
+    <!-- Experience employee form -->
+    <div *ngIf="experienceform" class="container">
+        <experienceregistration></experienceregistration>
+    </div>
+    <!-- Experience employee form ends-->
+</div>
