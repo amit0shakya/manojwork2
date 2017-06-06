@@ -35,14 +35,52 @@
             </div>
           </div>
 
-          <div class="fresher-location" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Current Location </div>
-            <div class="col-sm-9">
-              <select name="location" [(ngModel)]="userData.location">
+          <!--Current Address -->
+          <div class="currentaddress" class="col-sm-12 formfield">
+            <div class="col-sm-3">Current Address</div>
+
+            <div class="col-sm-4">
+               <select name="location">
                 <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>
               </select>
             </div>
+
+            <div class="col-sm-5">
+              <input type="text" placeholder="State" required >
+            </div>
           </div>
+
+          <div class="col-sm-12 formfield">
+            <div class="col-sm-3"></div>
+             <div class="col-sm-9">
+                <input type="text" name="currentaddress" placeholder="full address"/>
+             </div> 
+          </div>
+          <!--Current Address End-->
+
+          <!--Current Address -->
+          <div class="currentaddress" class="col-sm-12 formfield">
+            <div class="col-sm-3">Permanent Address</div>
+
+            <div class="col-sm-4">
+               <select name="location">
+                <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-5">
+              <input type="text" placeholder="State" required >
+            </div>
+          </div>
+
+          <div class="col-sm-12 formfield">
+            <div class="col-sm-3"></div>
+             <div class="col-sm-9">
+                <input type="text" name="currentaddress" placeholder="full address" />
+             </div> 
+          </div>
+          <!--Current Address End-->
+          
 
           <div class="fresher-resume" class="col-sm-12 formfield">
             <div class="col-sm-3"> Upload Resume </div>
@@ -53,12 +91,168 @@
             </div>
           </div>
           
+          <!--
           <div class="fresher-formfields" class="col-sm-12 formfield">
             <div class="col-sm-3"> Highest Qualification </div>
             <div class="col-sm-9">
               Select your highest Qualification
             </div>
           </div>
+          -->
+          
+          <div class="fresher-formfields" class="col-sm-12 formfield"  style="height:auto">
+            <div class="col-sm-3"> Education Info </div>
+            <div class="col-sm-9" style="height:auto; margin:10px 0px;">
+
+              <!-- 10th and 12th Qual Starts  class="educationalinfo" -->
+
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>Class</th>
+                    <th>School/University</th>
+                    <th>Subjects</th>
+                    <th>Duration</th>
+                    <th>Marks%</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr >
+                  <td>10th</td>
+                  <td>
+                    <input type="text" placeholder="School/University" required style="border:none;"/>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Subjects" required style="border:none;"/>
+                  </td>
+                  <td>
+                    from-to
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Marks%" required style="border:none;"/>
+                  </td>
+                  <td> </td>
+                </tr>
+
+                <tr >
+                  <td>12th</td>
+                  <td>
+                    <input type="text" placeholder="School/University" required style="border:none;"/>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Subjects" required style="border:none;"/>
+                  </td>
+                  <td>
+                    from - to
+                  </td>
+                  <td>
+                    <input type="text" placeholder="Marks%" required style="border:none;"/>
+                  </td>
+                  <td>
+                    
+                  </td>
+                </tr>
+
+                <tr *ngFor="let edu of educationalinfo; let i=index">
+                  <td>
+                    <input type="text" placeholder="Qualification" required style="border:none;"/>
+                  </td>
+                  
+                  <td>
+                    <input type="text" placeholder="University" required style="border:none;"/>
+                  </td>
+                  
+                  <td>
+                    <input type="text" placeholder="Subjects" required style="border:none;"/>
+                  </td>
+                  
+                  <td> 
+                    from-to
+                  </td>
+                  
+                  <td>
+                      <input type="text" placeholder="Marks%" required style="border:none;"/>
+                  </td>
+
+                  <td> 
+                    <button class="btn btn-danger" (click)="removeQual(i)"> - </button> 
+                  </td>
+
+                </tr>
+
+                <!-- <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>  -->
+                </tbody>
+              </table>
+
+              <button class="addqual" type="button" (click)="addQual()"> +Add </button>
+
+              <!-- 10th and 12th Qual End-->
+            </div>
+          </div>
+
+          <!-- Technical Qualification Starts-->
+
+          <div class="fresher-formfields" class="col-sm-12 formfield" style="height:auto">
+            <div class="col-sm-3"> Technical Qualification </div>
+            <div class="col-sm-9" style="height:auto">
+                <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>Qualification</th>
+                    <th>University</th>
+                    <th>Discription</th>
+                    <th>Degree</th>
+                    <th>Duration</th>
+                    <th>Marks%</th>
+                    <th></th>
+                  </tr>
+<!--   
+
+<option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>
+
+-->
+                  <tr *ngFor="let tech of techqualinfo; let i=index">
+                    <td>
+                      <input type="text" placeholder="Qualification" style="border:none" />
+                    </td>
+
+                    <td>
+                      <input type="text" placeholder="University" style="border:none" />
+                    </td>
+
+                    <td>
+                      <input type="text" placeholder="Discription" style="border:none" />
+                    </td>
+                    
+                    <td>
+                      <select style="border:none">
+                        <option>Degree</option>
+                        <option>Diploma</option>
+                        <option>Certifaction</option>
+                      </select>
+                      </td>
+
+                    <td>from - to</td>
+                    
+                    <td>
+                      <input type="text" placeholder="Marks%" style="border:none" />
+                    </td>
+                    
+                    <td>
+                      <button type="button" class="btn btn-danger" (click)="removetechQual(i)">-</button>
+                    </td>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                <tr >
+              </table>
+
+              <button class="addqual" type="button" (click)="addTechQual()"> +Add </button>
+            </div>
+          </div>
+          <!-- Technical Qualification Ends-->
 
           <div class="fresher-formfields" class="col-sm-12 formfield">
             <div class="col-sm-3"> course </div>

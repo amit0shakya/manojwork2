@@ -29,3 +29,19 @@ font-family: 'roboto'; text-align: center; font-size: 16px;}
 
 .captchabox input[type="text"]{width:40px; height:40px; text-align: center; line-height: 40px; font-family: 'roboto-black'; text-align: center; 
 color:#fff; background-color: #6ac6f9; float: left; border: none; font-size: 16px;}
+
+.educationalinfo{width: 100%; border:1px solid #eee; box-sizing: border-box; margin:10px 0px;}
+
+.educationalinfo tr th{text-align: center;border:1px solid #eee; padding:0px 5px;}
+
+.educationalinfo tr td{border:1px solid #eee; padding:0px 5px;}
+
+.addqual{ background-color:#6ac6f9; border: none; height:40px; line-height: 40px;color: #fff; padding:0px 20px;}
+
+.addqual:hover{ background-color:#63b7e6; border: none; height:40px; line-height: 40px;color: #fff; padding:0px 20px;}
+
+.removequal{ background-color:#fa7f7f; border: none; height:40px; line-height: 40px;color: #fff; padding:0px 20px;}
+
+.removequal:hover{ background-color:#ff5f5f; border: none; height:40px; line-height: 40px;color: #fff; padding:0px 20px;}
+
+.fresher-formfields table tr td button[type="text"]{border:none}
