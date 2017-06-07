@@ -9,21 +9,21 @@
           <div class="fresher-formfields" class="col-sm-12 formfield">
             <div class="col-sm-3"> Name </div>
             <div class="col-sm-9">
-              <input type="text" name="name" [(ngModel)]="userData.name" placeholder="Name" required>
+              <input type="text" name="name"  placeholder="Name" required>
             </div>
           </div>
 
           <div class="fresher-email" class="col-sm-12 formfield">
             <div class="col-sm-3"> Email ID </div>
             <div class="col-sm-9">
-              <input type="email" name="email" placeholder="Enter your active email id" required [(ngModel)]="userData.email" >
+              <input type="email" name="email" placeholder="Enter your active email id" required >
             </div>
           </div>
 
           <div class="fresher-password" class="col-sm-12 formfield">
             <div class="col-sm-3">Enter Password </div>
             <div class="col-sm-9">
-              <input type="password" placeholder="Min 6 characters" required name="pass" [(ngModel)]="userData.pass">
+              <input type="password" placeholder="Min 6 characters" required name="pass" >
             </div>
           </div>
 
@@ -31,14 +31,14 @@
             <div class="col-sm-3">Enter Mobile</div>
             <div class="col-sm-9">
               <div class="form-tel-label">+91</div>
-              <input type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Where recruiters call you" required name="phone" [(ngModel)]="userData.phone" >
+              <input type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Where recruiters call you" required name="phone"  >
             </div>
           </div>
 
           <div class="fresher-location" class="col-sm-12 formfield">
             <div class="col-sm-3"> Current Location </div>
             <div class="col-sm-9">
-              <select name="location" [(ngModel)]="userData.location">
+              <select name="location" >
                 <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>
               </select>
             </div>
@@ -72,14 +72,14 @@
           <div class="fresher-formfields" class="col-sm-12 formfield">
             <div class="col-sm-3"> Specialization </div>
             <div class="col-sm-9">
-              <input type="text"  placeholder="Your technical specialization" required name="specilization" [(ngModel)]="userData.specilization">
+              <input type="text"  placeholder="Your technical specialization" required name="specilization" >
             </div>
           </div>
 
           <div class="fresher-formfields" class="col-sm-12 formfield">
             <div class="col-sm-3"> University/College </div>
             <div class="col-sm-9">
-              <input type="text"  placeholder="Institute Name" required name="institute" [(ngModel)]="userData.institute">
+              <input type="text"  placeholder="Institute Name" required name="institute">
             </div>
           </div>
 

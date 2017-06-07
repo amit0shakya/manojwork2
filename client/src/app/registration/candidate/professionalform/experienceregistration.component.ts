@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { candidateData } from '../userform';
+import { candidateformInfo } from '../userform';
 import { CaptchaService } from '../../../services/captcha.service';
 
 @Component({
@@ -13,8 +13,30 @@ export class ExperienceregistrationComponent implements OnInit {
 
 captchadata={val1:0,val2:0,method:''};
 captchadataanswer=null;
-userData= new candidateData('','','','','','','');
-
+/*
+userData= new candidateformInfo(
+  {name:'',pass:'',email:'',phone:'',institute:'',specilization:'',location:''},
+  [{
+      title:'',
+      marks:'',
+      univ:'',
+        duration:{
+                  from:'',
+                  to:''
+                  },
+                subjects:[{
+                    name:'',
+                    marks:''
+  }]}],
+  [{
+            title:'',
+            degree:'',
+            duration:{
+                from:'',
+                to:''},
+            institute:''
+  }]);
+*/
 Indianstates=[{"title":"Andhra Pradesh"},{"title":"Arunachal Pradesh"},{"title":"Assam"},{"title":"Bihar"},
 {"title":"Chhattisgarh"},{"title":"Goa"},{"title":"Gujarat"},{"title":"Haryana"},{"title":"Himachal Pradesh"},
 {"title":"Jammu & Kashmir"},{"title":"Jharkhand"},{"title":"Karnataka"},{"title":"Kerala"},{"title":"Madhya Pradesh"},

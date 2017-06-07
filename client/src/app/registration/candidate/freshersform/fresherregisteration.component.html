@@ -1,29 +1,27 @@
 <div style="float:left; overflow:hidden; ">
+  
     <form #fresherregister="ngForm" (ngSubmit)="submitform()" >
       <div class="col-sm-12">
-        
         <!-- fresher form step1 starts -->
-
-        <!-- name:string; pass:string; phone:string;email:string; -->
         <div>
           <div class="fresher-formfields" class="col-sm-12 formfield">
             <div class="col-sm-3"> Name </div>
             <div class="col-sm-9">
-              <input type="text" name="name" [(ngModel)]="userData.name" placeholder="Name" required>
+              <input type="text" name="name" placeholder="Name" required [(ngModel)]="candidateinfo.info.personelinfo.name">
             </div>
           </div>
 
           <div class="fresher-email" class="col-sm-12 formfield">
             <div class="col-sm-3"> Email ID </div>
             <div class="col-sm-9">
-              <input type="email" name="email" placeholder="Enter your active email id" required [(ngModel)]="userData.email" >
+              <input type="email" name="email" placeholder="Enter your active email id" required [(ngModel)]="candidateinfo.info.personelinfo.email">
             </div>
           </div>
 
           <div class="fresher-password" class="col-sm-12 formfield">
             <div class="col-sm-3">Enter Password </div>
             <div class="col-sm-9">
-              <input type="password" placeholder="Min 6 characters" required name="pass" [(ngModel)]="userData.pass">
+              <input type="password" placeholder="Min 6 characters" required name="pass" [(ngModel)]="candidateinfo.info.personelinfo.pass">
             </div>
           </div>
 
@@ -31,7 +29,7 @@
             <div class="col-sm-3">Enter Mobile</div>
             <div class="col-sm-9">
               <div class="form-tel-label">+91</div>
-              <input type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Where recruiters call you" required name="phone" [(ngModel)]="userData.phone" >
+              <input type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Where recruiters call you" required name="phone" [(ngModel)]="candidateinfo.info.personelinfo.phone">
             </div>
           </div>
 
@@ -40,25 +38,25 @@
             <div class="col-sm-3">Current Address</div>
 
             <div class="col-sm-4">
-               <select name="location">
+               <select name="location" #clocationdd>
                 <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>
               </select>
             </div>
 
             <div class="col-sm-5">
-              <input type="text" placeholder="State" required >
+              <input type="text" placeholder="city" name="city" required [(ngModel)]="candidateinfo.info.personelinfo.caddress.city">
             </div>
           </div>
 
           <div class="col-sm-12 formfield">
             <div class="col-sm-3"></div>
              <div class="col-sm-9">
-                <input type="text" name="currentaddress" placeholder="full address"/>
+                <input type="text" name="caddress" placeholder="full address" [(ngModel)]="candidateinfo.info.personelinfo.caddress.caddress"/>
              </div> 
           </div>
           <!--Current Address End-->
 
-          <!--Current Address -->
+          <!--Permanent Address -->
           <div class="currentaddress" class="col-sm-12 formfield">
             <div class="col-sm-3">Permanent Address</div>
 
@@ -69,17 +67,17 @@
             </div>
 
             <div class="col-sm-5">
-              <input type="text" placeholder="State" required >
+              <input type="text" placeholder="State" required name="paddress" [(ngModel)]="candidateinfo.info.personelinfo.paddress.paddress">
             </div>
           </div>
 
           <div class="col-sm-12 formfield">
             <div class="col-sm-3"></div>
              <div class="col-sm-9">
-                <input type="text" name="currentaddress" placeholder="full address" />
+                <input type="text" name="currentaddress" placeholder="full address" [(ngModel)]="candidateinfo.info.personelinfo.paddress.paddress"/>
              </div> 
           </div>
-          <!--Current Address End-->
+          <!--Permanent Address End-->
           
 
           <div class="fresher-resume" class="col-sm-12 formfield">
@@ -99,7 +97,7 @@
             </div>
           </div>
           -->
-          
+
           <div class="fresher-formfields" class="col-sm-12 formfield"  style="height:auto">
             <div class="col-sm-3"> Education Info </div>
             <div class="col-sm-9" style="height:auto; margin:10px 0px;">
@@ -117,77 +115,45 @@
                     <th></th>
                   </tr>
                 </thead>
+
                 <tbody>
-                <tr >
-                  <td>10th</td>
-                  <td>
-                    <input type="text" placeholder="School/University" required style="border:none;"/>
-                  </td>
-                  <td>
-                    <input type="text" placeholder="Subjects" required style="border:none;"/>
-                  </td>
-                  <td>
-                    from-to
-                  </td>
-                  <td>
-                    <input type="text" placeholder="Marks%" required style="border:none;"/>
-                  </td>
-                  <td> </td>
-                </tr>
 
-                <tr >
-                  <td>12th</td>
+                <tr *ngFor="let data of educationobjdata; let i=index">
                   <td>
-                    <input type="text" placeholder="School/University" required style="border:none;"/>
-                  </td>
-                  <td>
-                    <input type="text" placeholder="Subjects" required style="border:none;"/>
-                  </td>
-                  <td>
-                    from - to
-                  </td>
-                  <td>
-                    <input type="text" placeholder="Marks%" required style="border:none;"/>
-                  </td>
-                  <td>
-                    
-                  </td>
-                </tr>
 
-                <tr *ngFor="let edu of educationalinfo; let i=index">
-                  <td>
-                    <input type="text" placeholder="Qualification" required style="border:none;"/>
-                  </td>
-                  
-                  <td>
-                    <input type="text" placeholder="University" required style="border:none;"/>
-                  </td>
-                  
-                  <td>
-                    <input type="text" placeholder="Subjects" required style="border:none;"/>
-                  </td>
-                  
-                  <td> 
-                    from-to
-                  </td>
-                  
-                  <td>
-                      <input type="text" placeholder="Marks%" required style="border:none;"/>
+                    <input type="text" placeholder="Degree" required style="border:none;" name="class" 
+                     *ngIf="data.class==''" [(ngModel)]="data.class"/> {{data.class}}{{i}}
                   </td>
 
                   <td> 
-                    <button class="btn btn-danger" (click)="removeQual(i)"> - </button> 
+                    <input type="text" placeholder="School/University" required style="border:none;"  
+                    name="eduUniv" [(ngModel)]="data.univ" />
                   </td>
 
+                  <td>
+                    <input type="text" placeholder="Subjects" required style="border:none;" 
+                    name="eduSubjects" [(ngModel)]="data.subjects"/>
+                  </td>
+
+                  <td>
+                    from-to
+                  </td>
+
+                  <td>
+                    <input type="text" placeholder="Marks%" required style="border:none;" 
+                    name="eduMarks" [(ngModel)]="data.marks"/>
+                  </td>
+
+                  <td> 
+                    <button type="text" class="btn btn-danger" *ngIf="data.action" 
+                    (click)="removeEducationalQual(i)">-</button>
+                  </td>
                 </tr>
 
-                <!-- <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>  -->
                 </tbody>
               </table>
 
-              <button class="addqual" type="button" (click)="addQual()"> +Add </button>
-
-              <!-- 10th and 12th Qual End-->
+              <button class="addqual" type="button" (click)="addEducationalQual()"> +Add </button>
             </div>
           </div>
 
@@ -213,6 +179,7 @@
 
 -->
                   <tr *ngFor="let tech of techqualinfo; let i=index">
+   
                     <td>
                       <input type="text" placeholder="Qualification" style="border:none" />
                     </td>
@@ -253,69 +220,7 @@
             </div>
           </div>
           <!-- Technical Qualification Ends-->
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> course </div>
-            <div class="col-sm-9">
-              <div (click)="tab1=!tab1; tab2=false; tab3=false; val='fulltime'" class="col-sm-4 fresher-formfieldradio"  [ngClass]="{'selectedtab':tab1}">Full Time</div>
-              <div (click)="tab2=!tab2; tab1=false; tab3=false; val='parttime'" class="col-sm-4 fresher-formfieldradio" [ngClass]="{'selectedtab':tab2}">Part Time</div>
-              <div (click)="tab3=!tab3; tab1=false; tab2=false; val='correspondence'" class="col-sm-4 fresher-formfieldradio" [ngClass]="{'selectedtab':tab3}">Correspondence</div>
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Specialization </div>
-            <div class="col-sm-9">
-              <input type="text"  placeholder="Your technical specialization" required name="specilization" [(ngModel)]="userData.specilization">
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> University/College </div>
-            <div class="col-sm-9">
-              <input type="text"  placeholder="Institute Name" required name="institute" [(ngModel)]="userData.institute">
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Course </div>
-            <div class="col-sm-9">
-              <input type="text" placeholder="Enter your full name" required >
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Passing year </div>
-            <div class="col-sm-9">
-              <input type="text"  placeholder="select year of passing" required >
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Skills </div>
-            <div class="col-sm-9">
-              <input minlength="" type="text" placeholder="Enter your areas of expertise/specilization" required >
-            </div>
-          </div>
         <!-- End of step 1 ends-->
-
-        <div class="fresher-formfields" class="col-sm-12 formfield">
-           <div class="captchabox" id="captcha">
-
-             <div class="captchatitle"> Solve this</div>
-
-             <div class="captchatext"> {{captchadata.val1}} </div>
-
-             <div class="captchatext"> {{captchadata.method}} </div>
-
-             <div class="captchatext"> {{captchadata.val2}} </div>
-
-             <div class="captchatext"> = </div>
-
-             <input type="text" class="captchaanswerbox" [(ngModel)]="captchadataanswer" name="captchadataanswer" >
-             
-           </div>
-        </div>
 
           <div class="col-sm-12" style="height:160px; padding-top:40px;">
            

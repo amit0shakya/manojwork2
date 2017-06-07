@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup,NgForm } from '@angular/forms';
-import { candidateData } from '../userform';
+import { candidateformInfo } from '../userform';
 import { CaptchaService } from '../../../services/captcha.service';
 
 @Component({
@@ -14,23 +14,15 @@ export class FresherregisterationComponent implements OnInit {
 captchadata={val1:0,val2:0,method:''};
 captchadataanswer=null;
 
+educationobj={class:'',univ:'',subjects:'',duration:'',marks:'',action:true}
 
-educationalfield={class:'',school:'',univ:'',duration:{from:'',to:''},marks:''};
-educationalinfo=[]
+educationobjdata=[
+  {class:'10th',univ:'',subjects:'',duration:'',marks:'',action:false},
+  {class:'12th',univ:'',subjects:'',duration:'',marks:'',action:false}
+]
 
-techqualfield={qual:"",univ:"",degree:"",duration:{from:'',to:''},marks:''};
-techqualinfo=[this.techqualfield];
-
-/*
-
-<th>Qualification</th>
-                    <th>Discription</th>
-                    <th>Degree</th>
-                    <th>Duration</th>
-                    <th>Marks%</th>
-*/ 
-
-userData= new candidateData('','','','','','','');
+candidateinfo=new candidateformInfo();
+educationaldata=[]
 
 indianstates=[{"title":"Andhra Pradesh"},{"title":"Arunachal Pradesh"},{"title":"Assam"},{"title":"Bihar"},
 {"title":"Chhattisgarh"},{"title":"Goa"},{"title":"Gujarat"},{"title":"Haryana"},{"title":"Himachal Pradesh"},
@@ -42,9 +34,7 @@ indianstates=[{"title":"Andhra Pradesh"},{"title":"Arunachal Pradesh"},{"title":
 
 browsedfilename="Upload Resume";
 
-  constructor(private captcha:CaptchaService) {
-    
-  }  
+  constructor(private captcha:CaptchaService) {}  
 
   submitform(){
     if(!this.captcha.check(this.captchadataanswer)){
@@ -63,23 +53,35 @@ browsedfilename="Upload Resume";
   }
 
   addTechQual(){
-    this.techqualinfo.push(this.techqualfield);
+   // this.educationobjdata.push(this.educationobj);
+    console.log("add tech qual");
   }
 
   removetechQual(index){
+    /*
     if(this.techqualinfo.length>0){
       this.techqualinfo.splice(index,1);
-    }
+    }*/
   }
 
-  addQual(){
-    this.educationalinfo.push(this.educationalfield)
+  removeeducation(index){
+      this.educationobjdata.splice(index,1)
+  }
+
+  removeEducationalQual(index){
+    this.educationobjdata.splice(index,1)
+  }
+
+  addEducationalQual(){
+    this.educationobjdata.push(this.educationobj)
+    console.log("add qual")
   }
 
   removeQual(index){
+    /*
     if(this.educationalinfo.length>0){
       this.educationalinfo.splice(index,1);
-    }
+    }*/
   }
 
   submitdata(){
@@ -88,8 +90,18 @@ browsedfilename="Upload Resume";
 
   ngOnInit() {
     this.captchadata=this.captcha.get();
-    console.log(this.captchadata,"<<<captcha in fresher");
     //console.log(this.captcha.check(10),"<<<check captcha");
+    //this.personalinfo=this.userData.personalinfo;
+    //console.log(this.userData,"<<<user data")
+    this.dataschemasetup();
   }
 
+  dataschemasetup(){
+    //this.educationaldata.push(this.educationdataschema)
+    //{vala:{abc:""},valb:{}}
+
+    console.log(this.candidateinfo.info)
+    this.candidateinfo.info.educationalinfo.push(this.educationobjdata);
+
+  }
 }
