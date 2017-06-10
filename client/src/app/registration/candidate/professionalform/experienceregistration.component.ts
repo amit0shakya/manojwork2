@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { candidateformInfo } from '../userform';
+//import { candidateformInfo } from '../userform';
 import { CaptchaService } from '../../../services/captcha.service';
 
 @Component({

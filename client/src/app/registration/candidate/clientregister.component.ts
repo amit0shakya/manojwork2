@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+/*
 import { FresherregisterationComponent } from "./freshersform/fresherregisteration.component";
+*/
 import { ExperienceregistrationComponent } from "./professionalform/experienceregistration.component";
 import { CaptchaService } from '../../services/captcha.service';
 
@@ -7,7 +9,7 @@ import { CaptchaService } from '../../services/captcha.service';
   selector: 'app-clientregister',
   templateUrl: './clientregister.component.html',
   styleUrls: ['./clientregister.component.css'],
-  providers:[FresherregisterationComponent,ExperienceregistrationComponent,CaptchaService]
+  providers:[CaptchaService]
 })
 export class ClientregisterComponent implements OnInit {
 

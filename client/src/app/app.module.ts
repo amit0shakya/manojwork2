@@ -12,6 +12,7 @@ import { AppRouter } from './route';
 import { ClientregisterComponent } from './registration/candidate/clientregister.component';
 import { FresherregisterationComponent } from './registration/candidate/freshersform/fresherregisteration.component';
 import { ExperienceregistrationComponent } from './registration/candidate/professionalform/experienceregistration.component';
+import { ReactiveFormsModule }  from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ExperienceregistrationComponent } from './registration/candidate/profes
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRouter
+    AppRouter,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
