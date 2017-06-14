@@ -1,0 +1,222 @@
+
+<div class="container">
+    <form [formGroup]="fresherform" (ngSubmit)="formsubmit(fresherform.value)" novalidate>
+
+    <!-- formgoup personnel info start -->    
+     <div class="col-sm-12" formGroupName="personelinfo" >  
+       <div class="row">    
+            <div class="col-sm-3">
+                Name
+            </div>
+
+            <div class="col-sm-5">
+                <input class="form-Control" formControlName="name" placeholder="Name" style="width:100%"/>
+            </div>
+
+            <div class="col-sm-4">
+                <input class="form-Control" formControlName="lname" placeholder="Last Name" style="width:100%"/>
+            </div>
+       </div>     
+
+       <div class="row">    
+            <div class="col-sm-3">
+                Email
+            </div>
+
+            <div class="col-sm-9">
+                <input class="form-Control" formControlName="email" placeholder="Email" style="width:100%"/>
+            </div>
+       </div>
+
+       <div class="row">    
+            <div class="col-sm-3">
+                Password
+            </div>
+
+            <div class="col-sm-9">
+                <input class="form-Control" formControlName="pass" placeholder="Password" style="width:100%"/>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                Mobile
+            </div>
+
+            <div class="col-sm-9">
+                <input class="form-Control" formControlName="mobile" placeholder="Mobile" style="width:100%"/>
+            </div>
+        </div>
+
+
+        <div formArrayName="address" class="row">
+            <div *ngFor="let add of address.controls; let i=index" [formGroupName]="i" class="row">
+            
+            <div class="col-sm-3">Address <span *ngIf="i>0">{{i}}</span></div>
+
+
+            <div class="col-sm-9">
+                  <div class="col-sm-4">
+                      <select formControlName="state">
+                        <option>Select State</option>
+                        <option *ngFor="let state of States; let j=index" [selected]="state.title"  [value]="state.title">{{state.title}}</option>
+                       </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <input class="form-Control" formControlName="city" placeholder="City" style="width:100%"/>
+                    </div>
+
+                    <div class="col-sm-4">
+                          <input class="form-Control" formControlName="zip" placeholder="Zip" style="width:100%"/>
+                    </div>
+
+                    <div class="col-sm-10">
+                         <input class="form-Control" formControlName="address" placeholder="address" style="width:100%"/>
+                     </div>
+
+                    <div class="col-sm-2" *ngIf="i>0" >
+                         <button class="btn btn-danger" (click)="removeAddress(i)" style="float:right">-Remove Address</button>
+                     </div>
+                </div>
+                    
+            </div>
+
+            <div class="col-sm-12" >
+                <button class="btn btn-info" (click)="addAddress()" style="float:right">+Add Another Addrss</button>
+            </div>
+                
+        </div>
+
+    </div>
+    <!-- formgoup personnel info end -->
+
+     <!-- formgoup EducationalInfo info end -->
+    <div class="column" style="">
+        <div class="col-sm-12">
+            <div class="col-sm-3">Educational Qualification:</div>
+
+            <div class="col-sm-9"  formArrayName="education">
+            
+                <div class="row" *ngFor="let edu of education.controls; let i=index" [formGroupName]="i">
+                    <div class="col-sm-4">
+
+                        <div *ngIf="i==0">10th</div>
+                        <div *ngIf="i==1">12th</div>
+                        <input *ngIf="i>1" class="form-Control" formControlName="title" placeholder="Qualification" style="width:100%"/>
+                        
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-Control" formControlName="univ" placeholder="University" style="width:100%"/>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-Control" formControlName="marks" placeholder="Marks%" style="width:100%"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="col-sm-4">Duration</div>
+                        
+                        <div class="col-sm-4">
+                            <input class="form-Control" formControlName="from" placeholder="From year" style="width:100%"/>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <input class="form-Control" formControlName="from" placeholder="To Year" style="width:100%"/>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6" formArrayName="subjects">
+                        
+                        
+                        <div *ngFor="let subject of subjects.controls; let j=index" [formGroupName]="j" class="row" 
+                        style="height:auto; overflow:hidden;">
+
+                            <div class="col-sm-5">
+                                <input class="form-Control" formControlName="title" placeholder="Subject" style="width:100%"/>
+                            </div>
+
+                            <div class="col-sm-5">
+                                <input class="form-Control" formControlName="marks" placeholder="Marks" style="width:100%"/>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <!--
+                                <button *ngIf="j>0" class="btn btn-danger" (click)="removeSubjects(j)">-</button>
+                                -->
+                            </div>
+                        </div>
+                        <!--
+                        <div class="row">
+                            <button class="btn btn-pripary" (click)="addSubjects(edu)">+Add</button>
+                        </div>-->
+                    </div>
+                    <button *ngIf="i>1" class="btn btn-danger" (click)="removeEducation(i)">-Remove</button> 
+                </div>
+                    <button class="btn btn-info" (click)="addEducation()">+Add</button>
+            </div>
+        </div>
+    </div>
+    <!-- educational group info ends -->
+
+    <!-- technical array starts -->
+
+    <div class="column">fuck</div>
+
+    <div class="column">
+        <div class="col-sm-3"> Technical Qualification </div>
+      
+        <div class="col-sm-9">
+
+            <div formArrayName="techqual">
+
+                <div *ngFor="let qual of techqual.controls; let i=index" col="col-sm-12" [formGroupName]="i">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input class="form-Control" formControlName="title" placeholder="Qualification" style="width:100%"/>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <select formControlName="edu">
+                            <option [selected] [value]="Diploma">Diploma</option>
+                            <option  [value]="Certification">Certification</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input class="form-Control" formControlName="institute" placeholder="Institute/University Name" style="width:100%"/>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="col-sm-2">
+                            Duration
+                        </div>
+                        <div class="col-sm-5">
+                            <input class="form-Control" formControlName="from" placeholder="From year-month" style="width:100%"/>
+                        </div>
+                        <div class="col-sm-5">
+                            <input class="form-Control" formControlName="to" placeholder="To year-month" style="width:100%"/>
+                        </div> 
+                    </div>
+                </div>
+                        <button class="btn btn-danger" (click)="removeTechQual(i)">-</button>
+                </div>
+                <button class="btn btn-primary" (click)="addTechQual()">+Add</button>
+            </div>
+
+        </div>
+
+        
+    </div>
+    <!-- technical array ends -->
+
+    <button class="btn btn-primary" type="submit">Submit Form</button>
+    </form>
+</div>
+
+{{fresherform.value | json}}
+<!--
+state:'', city:'', zip:'', address:''
+          -->

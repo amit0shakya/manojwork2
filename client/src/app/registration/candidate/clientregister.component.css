@@ -1,5 +1,9 @@
 .candidate-register-options{margin-top:30px;}
 
+.candidate-register-smallbanner{height:100px;background-image: url('assets/images/homebannerbg.jpg')}
+
+.candidate-register-smallbanner h1{color:#fff; font-family: 'roboto-black'; font-size:36px; padding-top:10px;}
+
 .candidate-fresher, .candidate-professional{height: 250px; font-style:'roboto-light'; color:#000; cursor: pointer;}
 
 .candidate-fresher:hover, .candidate-professional:hover{height: 250px; 

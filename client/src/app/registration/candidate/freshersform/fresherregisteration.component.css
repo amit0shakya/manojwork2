@@ -1,4 +1,26 @@
- client.formfield{height:60px; line-height: 60px; position: relative;}
+.form-container{width:800px; height:auto; background-color: #f6f8fd; border :1px solid #afafb0; 
+margin: 50px auto 0px auto; overflow: hidden;}
+
+.form-heading{font-family: 'roboto'; font-size:32px; color:#666; padding:25px 0px 50px 20px;}
+
+.form-subheading{font-family: 'roboto'; font-size:18px; color:#666; padding:5px 35px;}
+
+.form-fieldcontainer{width:100%; float:left; padding:0px 20px; overflow: hidden; height: auto; margin:7px auto;}
+
+.inputfield{height:45px;}
+
+.inputfield input{height:45px; border:none; padding: 15px 0px 0px 15px; font-style:'roboto-light'}
+
+.resuleuploader{width:100%; height:45px; line-height: 45px; text-align: center; color:#fff; background-color: #339900;
+                font-style:'roboto-light'; }
+
+
+
+
+
+
+
+/* client.formfield{height:60px; line-height: 60px; position: relative;}
 
 .formfield input[type="text"], .formfield input[type="email"], .formfield input[type="password"],
 .formfield input[type="tel"] {width:100%; height:40px; padding:0px 10px;}
@@ -43,3 +65,5 @@ color:#fff; background-color: #6ac6f9; float: left; border: none; font-size: 16p
 .removequal{ background-color:#fa7f7f; border: none; height:40px; line-height: 40px;color: #fff; padding:0px 20px;}
 
 .removequal:hover{ background-color:#ff5f5f; border: none; height:40px; line-height: 40px;color: #fff; padding:0px 20px;}
+
+*/

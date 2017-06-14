@@ -1,12 +1,13 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, NgForm, FormArray, FormBuilder } from '@angular/forms';
 import { CaptchaService } from '../../../services/captcha.service';
+import { dataService } from '../../../services/dataservice.service';
 
 @Component({
   selector: 'fresherregisteration',
   templateUrl: './fresherregisteration.component.html',
   styleUrls: ['./fresherregisteration.component.css'],
-  providers:[CaptchaService]
+  providers:[CaptchaService, dataService]
 })
 
 export class FresherregisterationComponent implements OnInit {
@@ -30,15 +31,14 @@ States=[{"title":"Andhra Pradesh"},{"title":"Arunachal Pradesh"},{"title":"Assam
 
 /*
 educationobj={class:'',univ:'',subjects:'',duration:'',marks:'',action:true}
-
 candidateinfo=new candidateformInfo();
 educationaldata=[]
-
 */
+
 browsedfilename="Upload Resume";
 
-  constructor(private form:FormBuilder) {
-    this.formsetup();  
+  constructor(private form:FormBuilder, private _dataservice:dataService, private captcha:CaptchaService) {
+    this.formsetup();
   }  
 
 /*
@@ -79,14 +79,14 @@ browsedfilename="Upload Resume";
 
   getTechQualdata():FormArray{
     this.techqual = this.form.array([
-      this.form.group({title:'',type:'',from:''	,to:'', institute:'' 	})
+      this.form.group({title:'',edu:'',from:''	,to:'', institute:'' 	})
     ])
 
     return this.techqual;
   }
 
   addTechQual(){
-    this.techqual.push(this.form.group({title:'',type:'',from:''	,to:'', institute:''}));
+    this.techqual.push(this.form.group({title:'',edu:'',from:''	,to:'', institute:''}));
   }
 
   removeTechQual(index){
@@ -98,7 +98,6 @@ browsedfilename="Upload Resume";
        this.form.group({ title:"10th", marks:'', univ:'', from:'', to:'', subjects:this.getsubjectsdata()}),
        this.form.group({ title:"12th", marks:'', univ:'', from:'', to:'', subjects:this.getsubjectsdata()}),
      ])
-
      return this.education;
   }
 
@@ -151,8 +150,11 @@ browsedfilename="Upload Resume";
     }  
   }
 
-formsubmit(formData){
-  console.log(formData)
-}
+  formsubmit(formData){
+    console.log(formData);
+
+    console.log(this.captcha.get(),"<<<captcha data")
+    this._dataservice.postdata();
+  }
 
 }
