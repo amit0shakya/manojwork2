@@ -10,16 +10,17 @@ export class dataService {
 
     }
 
-    postdata(){
-
-        console.log('post data method in dataservice');
-
+    postdata(data:any){
         
-        var json = JSON.stringify({user:'amit',lname:'shakya'});
-        var params = 'json='+json;
+        var json = JSON.stringify(data);
+
+        console.log("POST DATA FUNCTION postdata>>>>>>",json)
+
+        //var params = 'json='+json;
+        var params = json;
         var headers = new Headers();
         headers.append('Content-Type','application/x-www-form-urlencoded');
 
-        return this._http.post('api/employerzone/register',params,{headers:headers}).map(res=>res.json())
+        return this._http.post('/api/register/freshercandidate',params,{headers:headers}).map(res=>res.json())
     }
 }

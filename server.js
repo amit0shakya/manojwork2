@@ -3,11 +3,11 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const app = express();
 
 // Get our API routes
-const api = require('./server/routes/api/app');
+//var api = require('./server/routes/api/app')(app)
 
-const app = express();
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,7 +16,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
 // Set our api routes
-app.use('/api', api);
+var mail=require('./server/mailer/mailer')
+require('./server/routes/api/app')(app,mail);
+
+/*
+app.post('/regcandidate',function(req,res){
+		//insert query
+		console.log("----server request---------")
+		return {val:"true"};
+		//console.log(req.body);		
+  })
+  
+
+app.post('/api/register/freshercandidate',function(req,res){
+	console.log(req.body,"<<<<<<server data")
+})*/
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

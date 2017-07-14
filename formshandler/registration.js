@@ -3,7 +3,6 @@ const app = express();
 const multer = require('multer');
 const http = require('http');
 
-
 // Multer diskStorage Defination
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -20,6 +19,8 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single('resume');
 
 app.post('/resumeupload', function (req, res) {
+console.log("resume upload post");
+
    upload(req, res, function (err) {
     if (err) {
       res.send("error"+err);

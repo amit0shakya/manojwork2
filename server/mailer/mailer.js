@@ -1,27 +1,66 @@
-const nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
+var xoauth2 = require('xoauth2');
 
-// create reusable transporter object using the default SMTP transport
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'amit0shakya@gmail.com',
-        pass: 'amit@1234'
-    }
-});
+var smtpTransport = nodemailer.createTransport({
+		host:'smtp.gmail.com',
+		secure:false,
+		port:587,
+		auth:{
+		 user:'amit0shakya@gmail.com',
+		 pass:'amit@1234'
+		}
+	});
 
-// setup email data with unicode symbols
-let mailOptions = {
-    from: '"Amit Shakya" <hello@jobeasy.com>', // sender address
-    to: 'bar@blurdybloop.com, baz@blurdybloop.com', // list of receivers
-    subject: 'Hello ✔', // Subject line
-    text: 'Hello world ?', // plain text body
-    html: '<b>Hello world ?</b>' // html body
-};
 
-// send mail with defined transport object
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        return console.log(error);
-    }
-    console.log('Message %s sent: %s', info.messageId, info.response);
-});
+function sendmail(app){
+    _parent=this;
+    _parent.app=app;
+}
+
+sendmail.prototype.verify=function(obj){
+    var receiver=obj.to;
+
+    var mailOptions = {
+        from:"Test mail - <amit0shakya@gmail.com>",
+        to:receiver,
+        subject: 'Email verification from joboculur',
+        html:"Hello test mail from nodemailer"
+	    }
+
+        smtpTransport.sendMail(mailOptions,function(err,responce){
+            if(err){
+                res.send("email send error "+err);
+            }else{
+                res.send("email sent successfully");
+            }
+	    });
+
+}
+
+
+module.exports=sendmail;
+
+
+
+
+
+
+
+/*
+function mail(val){
+    _parent=this;
+    _parent.val=val;
+}
+
+mail.prototype.send=function(param){
+        console.log(_parent.val,"<<<<show val")
+}
+
+mail.prototype.get=function(){
+    
+    console.log("hello prototype function>>>>"+_parent.val)
+}
+
+module.exports=mail;
+
+*/

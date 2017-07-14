@@ -1,213 +1,152 @@
 <div class="row">
     <div class="form-container">
-        <form [formGroup]="fresherform" (ngSubmit)="formsubmit(fresherform.value)" novalidate>
+        <form  novalidate #form="ngForm" (ngSubmit)="submitform(form.value, form.valid)">
             <!-- Step1 -->
             <div class="column form-heading">
                 Fresher Candidate Register
             </div>
 
-            <div formGroupName="personelinfo">
+            <div class="form-group" ngModelGroup="personelInfo">
                 <div class="form-subheading">Personel Info</div>
-        <!-- Username and password -->
-                <div class="form-fieldcontainer">
-
-                    <div class="col-sm-6 inputfield">
-                        <input class="form-Control" formControlName="name" placeholder="Name" style="width:100%"/>
+             
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="text" placeholder="Name" name="name"/>
                     </div>
-
-                    <div class="col-sm-6 inputfield">
-                        <input class="form-Control" formControlName="lname" placeholder="Last name" style="width:100%"/>
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="text" placeholder="Last name" name="lname"/>
                     </div>
-
                 </div>
-        <!-- Username and password -->
 
-        <div class="row separator"></div>
-
-        <!-- Password & email start -->
-                 <div class="form-fieldcontainer">
-
-                    <div class="col-sm-6 inputfield">
-                        <input class="form-Control" formControlName="pass" placeholder="Set password" style="width:100%"/>
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="password" placeholder="Set Passowrd" name="password"/>
                     </div>
 
-                    <div class="col-sm-6 inputfield">
-                        <input class="form-Control" formControlName="email" placeholder="Email" style="width:100%"/>
+                    <div class="col-md-6 col-sm-12">
+                        <input ngModel type="password" placeholder="Retype Passowrd" name="repassword"/>
                     </div>
-
                 </div>
-        <!-- Password & email end -->
 
-
-        <!-- Mobile && resume Upload Start-->
-               <div class="form-fieldcontainer">
-                    <div class="col-sm-6 inputfield">
-                        <input class="form-Control" formControlName="mobile" placeholder="Mobile" style="width:100%"/>
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="tel" placeholder="Mobile No" name="mobile"/>
                     </div>
 
-                    <div class="col-sm-6 inputfield">
-                        <input type="file" style="display:none;" (change)="getfile($event)" id="resumeuploader" name="resume" 
-                        value="Upload Latest Resume" accept=".doc,.docx,.rtf,.pdf">
-                        
-                        <label class="resuleuploader" for="resumeuploader" >{{browsedfilename}}</label>
-
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="tel" placeholder="Alternate No" name="phone"/>
                     </div>
-
                 </div>
-                <!-- Mobile && resume Upload End-->
 
-                <!-- Address Start -->
-                <div class="form-fieldcontainer" formArrayName="address">
-                    
-                    <div class="col-sm-12"  *ngFor="let add of address.controls; let i=index" [formGroupName]="i" >
-                        
-                        <div style="width:100%"> <h3>Address</h3></div>
-
-                        <div class="col-sm-4">
-                            <select formControlName="state">
-                                <option>Select State</option>
-                                <option *ngFor="let state of States; let j=index" [selected]="state.title"  [value]="state.title">{{state.title}}</option>
-                            </select>
-                        </div>
-
-                        <div class="col-sm-4 inputfield">
-                            <input class="form-Control" formControlName="city" placeholder="City" style="width:100%"/>
-                        </div>
-
-                        <div class="col-sm-4 inputfield">
-                            <input class="form-Control" formControlName="zip" placeholder="Zip" style="width:100%"/>
-                        </div>
-
-                        <div class="col-sm-12 inputfield">
-                            <input class="form-Control" formControlName="address" placeholder="address" style="width:100%"/>
-                        </div>
-
-                            <div class="col-sm-12" >
-                                <button *ngIf="i>0" class="btn btn-danger" (click)="removeAddress(i)" >-Remove Address</button>
-                                <button *ngIf="i==(address.controls.length-1)" class="btn btn-info" (click)="addAddress()" >+Add Another Addrss</button>
-                            </div>
-                         </div>
- 
-                    </div>
-                <!-- Address Ends -->
-
-
-            </div>
-            <!-- Step 1 End-->
-
-            <!-- Step 2 Start-->
-            <!-- Education field starts -->
-             <div class="form-fieldcontainer" [hidden]="true">
-             <div formArrayName="education">
-             <div >Educational Qualifiation</div>
-                    <div *ngFor="let edu of education.controls; let i=index" [formGroupName]="i">
-
-                        <div class="row">
-
-                            <div class="col-sm-5">
-                                <div *ngIf="i==0">10th</div>
-                                <div *ngIf="i==1">12th</div>
-                                <input *ngIf="i>1" class="form-Control" formControlName="title" placeholder="Qualification" style="width:100%"/>
-                            </div>
-
-                            <div class="col-sm-5">
-                                <input class="form-Control" formControlName="univ" placeholder="University" style="width:100%"/>
-                            </div>
-
-                            <div class="col-sm-2">
-                                <input class="form-Control" formControlName="marks" placeholder="Marks%" style="width:100%"/>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-sm-2">
-                                <input class="form-Control" formControlName="from" placeholder="From year" style="width:100%"/>
-                            </div>
-
-                            <div class="col-sm-2">
-                                <input class="form-Control" formControlName="from" placeholder="To Year" style="width:100%"/>
-                            </div>
-
-                            <div class="col-sm-8" formArrayName="subjects">
-
-                                <div *ngFor="let subject of subjects.controls; let j=index" [formGroupName]="j" class="row" style="height:auto; overflow:hidden;">
-
-                                    <div class="col-sm-10">
-                                        <input class="form-Control" formControlName="title" placeholder="Subject" style="width:100%"/>
-                                    </div>
-
-                                    <div class="col-sm-2">
-                                        <input class="form-Control" formControlName="marks" placeholder="Marks" style="width:100%"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                     <div class="row">
-                         <button *ngIf="i>1" class="btn btn-danger" (click)="removeEducation(i)" >-Remove</button>
-                         <button *ngIf="i==(education.controls.length-1)" class="btn btn-info" (click)="addEducation()" >+Add</button>
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="email" placeholder="Email" name="email"/>
                     </div>
 
+                    <div class="col-md-6 col-sm-12"> 
+                        <input type="file" style="display:none;" ngModel (change)="getfile($event)" id="resumeuploader" name="resume" value="Upload Latest Resume" accept=".doc,.docx,.rtf,.pdf">
+                        <label class="resuleuploader"  for="resumeuploader" >{{browsedfilename}}</label>
                     </div>
+                </div>
+         </div>
 
 
-            </div>      
-            <!-- Education field Ends -->
+         <div class="form-group" ngModelGroup="addressInfo">
+                <div class="form-subheading">Address</div>
 
-            <!-- Technical field Ends -->
-            <div class="row" formArrayName="techqual" [hidden]="true">
-                <div>Technical Qualification</div>
-                <div *ngFor="let qual of techqual.controls; let i=index" col="col-sm-12" [formGroupName]="i">
                 
+                <div class="form-row" *ngFor="let add of addressArr; let i=index" >
+                    <div ngModelGroup='address{{i}}'>
+                        <div class="col-md-12" *ngIf="i==0" style="min-height:25px; margin:0px; font-weight:600;">Permanent Address</div>
+                        <div class="col-md-12" *ngIf="i==1" style="min-height:25px; margin:0px; font-weight:600;">Present Address</div>
+                        <div class="col-md-4"> <input [ngModel]="addressArr[i].state" type="text" placeholder="State" name="state"/></div>
+                        <div class="col-md-4"> <input [(ngModel)]="addressArr[i].city" type="text" placeholder="City" name="city"/></div>
+                        <div class="col-md-4"> <input [(ngModel)]="addressArr[i].zip" type="text" placeholder="Zip" name="zip"/></div>
+                        <div class="col-md-8"> <input [(ngModel)]="addressArr[i].address" type="text" placeholder="Full Address" name="address"/></div>
                     
-                    <div class="row">
-                    <div class="col-sm-4">
-                        <input class="form-Control" formControlName="title" placeholder="Qualification" style="width:100%"/>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <select formControlName="edu">
-                            <option [selected] [value]="Diploma">Diploma</option>
-                            <option  [value]="Certification">Certification</option>
-                        </select>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <input class="form-Control" formControlName="institute" placeholder="Institute/University Name" style="width:100%"/>
+                        <div class="col-md-4"> 
+                            <button *ngIf="i>0" class="btn btn-danger" style="width:100%" (click)="removeaddress(i)">Remove</button>
+                            <button *ngIf="i<1 && i==(addressArr.length-1)" class="btn btn-info" style="width:100%" (click)="addaddress()">Add</button>
+                        </div>
                     </div>
                 </div>
+         </div>
+          <!-- Address info end -->
+            <div class="form-group" ngModelGroup="educationInfo">
+                    <div class="form-subheading">Educational Qulification</div>
 
-                <div class="row">
-                    <div>Duration</div>
+                    <div class="form-row" *ngFor="let edu of educationalArr; let i=index" name="edu.id">
+                    
+                    <div ngModelGroup="education{{i}}">
 
-                    <div class="col-sm-4">
-                        <input class="form-Control" formControlName="from" placeholder="From year" style="width:100%"/>
+                        <div class="col-md-2 col-sm-2" > 
+                            <div *ngIf="i==0">10th</div>
+                            <div *ngIf="i==1">12th</div>
+                            <input ngModel *ngIf="i>1" type="text" placeholder="Education" name="education" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel *ngIf="i<2" type="text" placeholder="School" name="school" style="width:100%"/>
+                            <input ngModel *ngIf="i>1" type="text" placeholder="University" name="univ" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel type="text" placeholder="marks" name="marks%" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel type="text" placeholder="Year from" name="yearf" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel type="text" placeholder="Year to" name="yeart" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" *ngIf="i>0"> 
+                            <button *ngIf="i>1 && i==(educationalArr.length-1)" class="btn btn-danger" (click)="removeeducation(i)" style="width:46%;">-</button>
+                            <button *ngIf="i==1 && i==(educationalArr.length-1)" class="btn btn-info" (click)="addeducation()" style="width:100%;" >Add</button>
+
+                            <button *ngIf="i>1 &&i==(educationalArr.length-1)" class="btn btn-info" (click)="addeducation()" style="width:46%;">+</button>
+                            <button *ngIf="i<(educationalArr.length-1)" class="btn btn-danger" (click)="removeeducation(i)" style="width:100%;">Remove</button>
+                        </div>
+
                     </div>
-
-                    <div class="col-sm-4">
-                        <input class="form-Control" formControlName="to" placeholder="To year" style="width:100%"/>
+                        
                     </div>
+            </div>
+            <!-- Education info end -->
 
-                    <div>
-                        <button class="btn btn-danger" (click)="removeTechQual(i)">- Remove</button>
-                        <button *ngIf="i==(techqual.controls.length-1)" class="btn btn-primary" (click)="addTechQual()">+Add</button>
-                        <button *ngIf="techqual.controls.length==''" class="btn btn-primary" (click)="addTechQual()">+Add</button>
+            <div class="form-group" ngModelGroup="technicalInfo">
+                    <div class="form-subheading">Technical Qulification</div>
+
+                    <button *ngIf="qualificationArr.length==0" class="btn btn-info"  (click)="addtecheducation()">Add Technical Qualifiation</button>
+
+                    <div class="form-row" *ngFor="let tedu of qualificationArr; let i=index">
+                    <div ngModelGroup="qualifcation{{i}}">
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Qualification" name="qual" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Diploma" name="diploma" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Insitute/University" name="univ" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Date from" name="datef" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Date to" name="datet" style="width:100%"/></div>
+
+                        <div class="col-md-2 col-sm-2"> 
+                            <button *ngIf="i==(qualificationArr.length-1)" class="btn btn-danger" (click)="removetecheducation(i)"  style="width:46%;">-</button>
+                            <!--
+                            <button *ngIf="i==0 && i==(qualificationArr.length-1)" class="btn btn-info" (click)="addtecheducation()" width="100%">Add</button>
+                            -->
+                            <button *ngIf="i==(qualificationArr.length-1)" class="btn btn-info" (click)="addtecheducation()"  style="width:46%;">+</button>
+                            <button *ngIf="i<(qualificationArr.length-1)" class="btn btn-danger" (click)="removetecheducation(i)"  style="width:100%;">Remove</button>
+                        </div>
                     </div>
-
-                </div>
-
-
-                </div>
-
+                    </div>
             </div>
 
+            <div class="col-md-12" style="margin:10px 0px 20px 0px;">
+                <button class="btn btn-primary submitbtn" name="submit" >Submit</button>
             </div>
-            <!-- Step 2 Ends-->
-                    <button class="btn btn-info" type="submit" style="display:none;" >Register</button>
-        </form>   
+            <!-- Technical Education info end -->
+        </form>
     </div>
 </div>
 
-{{fresherform.value | json}}
+{{form.value | json}}

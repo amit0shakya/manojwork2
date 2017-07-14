@@ -1,134 +1,179 @@
-<div style="float:left; overflow:hidden; ">
-    <form #pressionalregister="ngForm" (ngSubmit)="submitform()" >
-      <div class="col-sm-12">
-        
-        <!-- fresher form step1 starts -->
-
-        <!-- name:string; pass:string; phone:string;email:string; -->
-        <div>
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Name </div>
-            <div class="col-sm-9">
-              <input type="text" name="name"  placeholder="Name" required>
+<div class="row">
+    <div class="form-container">
+        <form  novalidate #form="ngForm" (ngSubmit)="submitform(form.value, form.valid)">
+            <!-- Step1 -->
+            <div class="column form-heading">
+                Experice Candidate Registration
             </div>
-          </div>
 
-          <div class="fresher-email" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Email ID </div>
-            <div class="col-sm-9">
-              <input type="email" name="email" placeholder="Enter your active email id" required >
-            </div>
-          </div>
-
-          <div class="fresher-password" class="col-sm-12 formfield">
-            <div class="col-sm-3">Enter Password </div>
-            <div class="col-sm-9">
-              <input type="password" placeholder="Min 6 characters" required name="pass" >
-            </div>
-          </div>
-
-          <div class="fresher-mobile" class="col-sm-12 formfield">
-            <div class="col-sm-3">Enter Mobile</div>
-            <div class="col-sm-9">
-              <div class="form-tel-label">+91</div>
-              <input type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="10" placeholder="Where recruiters call you" required name="phone"  >
-            </div>
-          </div>
-
-          <div class="fresher-location" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Current Location </div>
-            <div class="col-sm-9">
-              <select name="location" >
-                <option *ngFor="let state of indianstates" value="{{state.title}}" ngControl="state" >{{state.title}}</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="fresher-resume" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Upload Resume </div>
-            <div class="col-sm-9">
-              <input type="file" style="display:none;" (change)="getfile($event)" id="resuleuploader" name="resuleuploader" 
-              value="Upload Latest Resume" accept=".doc,.docx,.rtf,.pdf">
-              <label class="resuleuploader" for="resuleuploader" >{{browsedfilename}}</label>
-            </div>
-          </div>
-          
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Highest Qualification </div>
-            <div class="col-sm-9">
-              Select your highest Qualification
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> course </div>
-            <div class="col-sm-9">
-              <div (click)="tab1=!tab1; tab2=false; tab3=false; val='fulltime'" class="col-sm-4 fresher-formfieldradio"  [ngClass]="{'selectedtab':tab1}">Full Time</div>
-              <div (click)="tab2=!tab2; tab1=false; tab3=false; val='parttime'" class="col-sm-4 fresher-formfieldradio" [ngClass]="{'selectedtab':tab2}">Part Time</div>
-              <div (click)="tab3=!tab3; tab1=false; tab2=false; val='correspondence'" class="col-sm-4 fresher-formfieldradio" [ngClass]="{'selectedtab':tab3}">Correspondence</div>
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Specialization </div>
-            <div class="col-sm-9">
-              <input type="text"  placeholder="Your technical specialization" required name="specilization" >
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> University/College </div>
-            <div class="col-sm-9">
-              <input type="text"  placeholder="Institute Name" required name="institute">
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Course </div>
-            <div class="col-sm-9">
-              <input type="text" placeholder="Enter your full name" required >
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Passing year </div>
-            <div class="col-sm-9">
-              <input type="text"  placeholder="select year of passing" required >
-            </div>
-          </div>
-
-          <div class="fresher-formfields" class="col-sm-12 formfield">
-            <div class="col-sm-3"> Skills </div>
-            <div class="col-sm-9">
-              <input minlength="" type="text" placeholder="Enter your areas of expertise/specilization" required >
-            </div>
-          </div>
-        <!-- End of step 1 ends-->
-
-        <div class="fresher-formfields" class="col-sm-12 formfield">
-           <div class="captchabox" id="captcha">
-
-             <div class="captchatitle"> Solve this</div>
-
-             <div class="captchatext"> {{captchadata.val1}} </div>
-
-             <div class="captchatext"> {{captchadata.method}} </div>
-
-             <div class="captchatext"> {{captchadata.val2}} </div>
-
-             <div class="captchatext"> = </div>
-
-             <input type="text" class="captchaanswerbox" [(ngModel)]="captchadataanswer" name="captchadataanswer" >
+            <div class="form-group" ngModelGroup="personelInfo">
+                <div class="form-subheading">Personel Info</div>
              
-           </div>
-        </div>
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="text" placeholder="Name" name="name"/>
+                    </div>
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="text" placeholder="Last name" name="lname"/>
+                    </div>
+                </div>
 
-          <div class="col-sm-12" style="height:160px; padding-top:40px;">
-           
-              <input type="submit" class="btn btn-primary custombtn" value="Register" >
-          </div>
-        </div>
-      </div>
-      <!-- End of form -->
-    </form>
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="password" placeholder="Set Passowrd" name="password"/>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <input ngModel type="password" placeholder="Retype Passowrd" name="repassword"/>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="tel" placeholder="Mobile No" name="mobile"/>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="tel" placeholder="Alternate No" name="phone"/>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12"> 
+                        <input ngModel type="email" placeholder="Email" name="email"/>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12"> 
+                        <input type="file" style="display:none;" ngModel (change)="getfile($event)" id="resumeuploader" name="resume" value="Upload Latest Resume" accept=".doc,.docx,.rtf,.pdf">
+                        <label class="resuleuploader"  for="resumeuploader" >{{browsedfilename}}</label>
+                    </div>
+                </div>
+         </div>
+
+
+         <div class="form-group" ngModelGroup="addressInfo">
+                <div class="form-subheading">Address</div>
+
+                
+                <div class="form-row" *ngFor="let add of addressArr; let i=index" >
+                    <div ngModelGroup='address{{i}}'>
+                        <div class="col-md-12" *ngIf="i==0" style="min-height:25px; margin:0px; font-weight:600;">Permanent Address</div>
+                        <div class="col-md-12" *ngIf="i==1" style="min-height:25px; margin:0px; font-weight:600;">Present Address</div>
+                        <div class="col-md-4"> <input [ngModel]="addressArr[i].state" type="text" placeholder="State" name="state"/></div>
+                        <div class="col-md-4"> <input [(ngModel)]="addressArr[i].city" type="text" placeholder="City" name="city"/></div>
+                        <div class="col-md-4"> <input [(ngModel)]="addressArr[i].zip" type="text" placeholder="Zip" name="zip"/></div>
+                        <div class="col-md-8"> <input [(ngModel)]="addressArr[i].address" type="text" placeholder="Full Address" name="address"/></div>
+                    
+                        <div class="col-md-4"> 
+                            <button *ngIf="i>0" class="btn btn-danger" style="width:100%" (click)="removeaddress(i)">Remove</button>
+                            <button *ngIf="i<1 && i==(addressArr.length-1)" class="btn btn-info" style="width:100%" (click)="addaddress()">Add</button>
+                        </div>
+                    </div>
+                </div>
+         </div>
+          <!-- Address info end -->
+            <div class="form-group" ngModelGroup="educationInfo">
+                    <div class="form-subheading">Educational Qulification</div>
+
+                    <div class="form-row" *ngFor="let edu of educationalArr; let i=index" name="edu.id">
+                    
+                    <div ngModelGroup="education{{i}}">
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <div *ngIf="i==0">10th</div>
+                            <div *ngIf="i==1">12th</div>
+                            <input ngModel *ngIf="i>1" type="text" placeholder="Education" name="education" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel *ngIf="i<2" type="text" placeholder="School" name="school" style="width:100%"/>
+                            <input ngModel *ngIf="i>1" type="text" placeholder="University" name="univ" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel type="text" placeholder="marks" name="marks%" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel type="text" placeholder="Year from" name="yearf" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" > 
+                            <input ngModel type="text" placeholder="Year to" name="yeart" style="width:100%"/>
+                        </div>
+
+                        <div class="col-md-2 col-sm-2" *ngIf="i>0"> 
+                            <button *ngIf="i>1 && i==(educationalArr.length-1)" class="btn btn-danger" (click)="removeeducation(i)" style="width:46%;">-</button>
+                            <button *ngIf="i==1 && i==(educationalArr.length-1)" class="btn btn-info" (click)="addeducation()" style="width:100%;" >Add</button>
+
+                            <button *ngIf="i>1 &&i==(educationalArr.length-1)" class="btn btn-info" (click)="addeducation()" style="width:46%;">+</button>
+                            <button *ngIf="i<(educationalArr.length-1)" class="btn btn-danger" (click)="removeeducation(i)" style="width:100%;">Remove</button>
+                        </div>
+
+                    </div>
+                        
+                    </div>
+            </div>
+            <!-- Education info end -->
+
+            <div class="form-group" ngModelGroup="technicalInfo">
+                    <div class="form-subheading">Technical Qulification</div>
+
+                    <button *ngIf="qualificationArr.length==0" class="btn btn-info"  (click)="addtecheducation()">Add Technical Qualifiation</button>
+
+                    <div class="form-row" *ngFor="let tedu of qualificationArr; let i=index">
+                    <div ngModelGroup="qualifcation{{i}}">
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Qualification" name="qual" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Diploma" name="diploma" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Insitute/University" name="univ" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Date from" name="datef" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-4"> <input ngModel type="text" placeholder="Date to" name="datet" style="width:100%"/></div>
+
+                        <div class="col-md-2 col-sm-2"> 
+                            <button *ngIf="i==(qualificationArr.length-1)" class="btn btn-danger" (click)="removetecheducation(i)"  style="width:46%;">-</button>
+                            <!--
+                            <button *ngIf="i==0 && i==(qualificationArr.length-1)" class="btn btn-info" (click)="addtecheducation()" width="100%">Add</button>
+                            -->
+                            <button *ngIf="i==(qualificationArr.length-1)" class="btn btn-info" (click)="addtecheducation()"  style="width:46%;">+</button>
+                            <button *ngIf="i<(qualificationArr.length-1)" class="btn btn-danger" (click)="removetecheducation(i)"  style="width:100%;">Remove</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+            <div class="form-group" ngModelGroup="workexperience">
+                    <div class="form-subheading">Work Experice</div>
+
+                    <button *ngIf="workArr.length==0" class="btn btn-info"  (click)="addwork()">Add Work Experice</button>
+
+                    <div class="form-row" *ngFor="let exp of workArr; let i=index">
+                    <div ngModelGroup="work{{i}}">
+                        <div class="col-md-4 col-sm-4"> <input ngModel type="text" placeholder="Company name" name="organisation" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-2"> <input ngModel type="text" placeholder="Designation" name="desig" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-2"> <input ngModel type="text" placeholder="Date from" name="datef" style="width:100%"/></div>
+                        <div class="col-md-2 col-sm-2"> <input ngModel type="text" placeholder="Date to" name="datet" style="width:100%"/></div>
+
+                        <div class="col-md-2 col-sm-2"> 
+                            <button *ngIf="i==(workArr.length-1)" class="btn btn-danger" (click)="removework(i)"  style="width:46%;">-</button>
+                            <!--
+                            <button *ngIf="i==0 && i==(qualificationArr.length-1)" class="btn btn-info" (click)="addtecheducation()" width="100%">Add</button>
+                            -->
+                            <button *ngIf="i==(workArr.length-1)" class="btn btn-info" (click)="addwork()"  style="width:46%;">+</button>
+                            <button *ngIf="i<(workArr.length-1)" class="btn btn-danger" (click)="removework(i)"  style="width:100%;">Remove</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+
+
+
+
+            <div class="col-md-12" style="margin:10px 0px 20px 0px;">
+                <button class="btn btn-primary submitbtn" name="submit" >Submit</button>
+            </div>
+            <!-- Technical Education info end -->
+        </form>
+    </div>
 </div>
+
+{{form.value | json}}

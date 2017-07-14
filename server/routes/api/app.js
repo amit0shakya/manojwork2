@@ -1,12 +1,20 @@
-const express = require('express'); 
-const router = express.Router();
-const http = require('http');
+module.exports=function(app,mail){
+	
+	var mailer=new mail(app);
 
-/* GET api listing. */ 
-router.get('/', (req, res) => { res.send('api works'); });
+		app.post('/api/register/freshercandidate',function(req,res){
 
-router.get('/submitform', (req, res) => { res.send('submit form api works'); });
+			/*
+			var user={}
+				user.to="punnoshakya@gmail.com";
+				*/
 
+				var data=JSON.parse(req.body.json);
+				console.log(data.personelInfo);
 
-/*upload resume*/
-module.exports = router;
+				//console.log(data.personelInfo)
+				//mailer.verify(user);
+
+				res.send("done");
+		})
+}
